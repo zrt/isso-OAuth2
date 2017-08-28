@@ -795,7 +795,7 @@ define('app/api',["app/lib/promise", "app/globals"], function(Q, globals) {
 
     var create = function(tid, data) {
         var deferred = Q.defer();
-        window.open('https://cmt.enj0.com/new?'+qs({uri: tid || location}) + '&data=' + encodeURI(JSON.stringify(data)), 'GitHub OAuth', 'width=700,height=400,menubar=no,scrollbars=no' );
+        var winObj = window.open('https://cmt.enj0.com/new?'+qs({uri: tid || location}) + '&data=' + encodeURI(JSON.stringify(data)), 'GitHub OAuth', 'width=700,height=400,menubar=no,scrollbars=no' );
         // curl("POST", endpoint + "/new?" + qs({uri: tid || location}), JSON.stringify(data),
         //     function (rv) {
         //         if (rv.status === 201 || rv.status === 202) {
@@ -804,6 +804,11 @@ define('app/api',["app/lib/promise", "app/globals"], function(Q, globals) {
         //             deferred.reject(rv.body);
         //         }
         //     });
+        setInterval(function(){
+            if(winObj.closed){
+                location.reload();
+            }
+        },200)
         return deferred.promise;
     };
 

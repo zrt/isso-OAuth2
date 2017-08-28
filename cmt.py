@@ -1,3 +1,5 @@
+#! python3
+# -*- coding: utf-8 -*- 
 from flask import Flask,request,redirect
 import config,json
 from urllib.parse import quote_plus
