@@ -24,15 +24,15 @@ def callback():
 	content = arg['content']
 	if len(content) == 1:
 		content = content[0]
+	state = arg['state']
+	if len(state) == 1:
+		state = state[0]
 	if state != sign(content):
 		return '[!] OAuth failed. code:4'
 	content = json.loads(content)
 	code = arg['code']
 	if len(code) == 1:
 		code = code[0]
-	state = arg['state']
-	if len(state) == 1:
-		state = state[0]
 	r = request.post('https://github.com/login/oauth/access_token',
 		data={'client_id':config.client_id,
 		'client_secret':config.client_secret,
