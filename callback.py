@@ -64,7 +64,7 @@ def callback():
 	except Exception as e:
 		return '[!] OAuth link error. code:7'
 
-	return '<html><head><meta charset="utf-8" /><title>Success!</title></head><body>Success.评论提交成功，正在等待审核，10秒后此页面自动关闭。<script>setTimeout(function() {window.close()}, 10000);</script></body></html>'
+	return '<html><head><meta charset="utf-8" /><title>Success!</title></head><body>Success.评论提交成功，正在等待审核，通过后会显示在评论区，5秒后此页面自动关闭。<script>setTimeout(function() {window.close()}, 5000);</script></body></html>'
 
 
 if __name__ == '__main__':
