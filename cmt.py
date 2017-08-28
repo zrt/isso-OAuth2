@@ -10,11 +10,12 @@ app.debug = False
 # def index():
 # 	return 'cmt!'
 
-@app.route('/new',methods=['POST'])
+@app.route('/new',methods=['GET'])
 def new():
 	# print(request.json)
 	uri = request.args.get('uri')
-	r = request.json
+	#r = request.json
+	r = json.loads(request.args.get('data'))
 	r['uri']=uri
 	content = json.dumps(r)
 	url = 'https://github.com/login/oauth/authorize?client_id='+config.client_id
