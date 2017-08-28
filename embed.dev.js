@@ -804,12 +804,14 @@ define('app/api',["app/lib/promise", "app/globals"], function(Q, globals) {
         //             deferred.reject(rv.body);
         //         }
         //     });
-        
+
         var num = null;
         var f = function(){
             $.post('https://isso.enj0.com/count','["'+$('#isso-thread').attr('data-isso-id')+'"]',function(a){
-                if(num === null) num = a;
-                else if(num !== a){
+                if(num === null){
+                    num = a;
+                    setTimeout(f,300);
+                }else if(num !== a){
                     window.location = window.location
                 }else{
                     setTimeout(f,300);
