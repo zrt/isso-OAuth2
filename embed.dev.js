@@ -811,10 +811,10 @@ define('app/api',["app/lib/promise", "app/globals"], function(Q, globals) {
                 if(num === null){
                     num = a;
                     setTimeout(f,300);
-                }else if(num !== a){
+                }else if(parseInt(num) !== parseInt(a)){
                     window.location = window.location
                 }else{
-                    setTimeout(f,300);
+                    setTimeout(f,1000);
                 }
             })
         }
