@@ -54,15 +54,17 @@ def callback():
 		content['author'] = r['name']
 	except Exception as e:
 		return '[!] OAuth data error. code:6'
-	r['access_token'] = access_token
+	r['access_token'] = token
 
 	# save content and r
 	print(r)
 	print(content)
-	send_comment(content['uri'],content)
+	try:
+		print(send_comment(content['uri'],content))
+	except Exception as e:
+		return '[!] OAuth link error. code:7'
 
-
-	return 'Success.评论提交成功，正在等待审核，请关闭页面。'
+	return 'Success.评论提交成功，正在等待审核，请关闭此页面。'
 
 
 if __name__ == '__main__':
