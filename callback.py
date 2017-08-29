@@ -26,12 +26,12 @@ def callback():
 	content = arg['content']
 	if len(content) == 1:
 		content = content[0]
-	content = unquote_plus(content)
 	state = arg['state']
 	if len(state) == 1:
 		state = state[0]
 	if state != sign(content):
 		return '[!] OAuth failed. code:4 请备份好评论内容，关闭此窗口后会刷新文章页面。'
+	content = unquote_plus(content)
 	content = json.loads(content)
 	code = arg['code']
 	if len(code) == 1:
