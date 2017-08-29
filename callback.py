@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- 
 from flask import Flask,request,redirect
 import config,json,requests
-from urllib.parse import quote_plus
+from urllib.parse import quote_plus,unquote_plus
 from app import sign,send_comment
 app = Flask('callback')
 
@@ -24,6 +24,7 @@ def callback():
 		return '[!] OAuth failed. code:3 请备份好评论内容，关闭此窗口后会刷新文章页面。'
 
 	content = arg['content']
+	content = unquote_plus(content)
 	if len(content) == 1:
 		content = content[0]
 	state = arg['state']

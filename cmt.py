@@ -17,10 +17,11 @@ def new():
 	# print(request.json)
 	uri = request.args.get('uri')
 	#r = request.json
-	print(request.args.get('data'))
+	# print(request.args.get('data'))
 	r = json.loads(request.args.get('data'))
 	r['uri']=uri
 	content = json.dumps(r)
+	content = quote_plus(content)
 	url = 'https://github.com/login/oauth/authorize?client_id='+config.client_id
 	url += '&redirect_uri=' +quote_plus(config.redirect_uri + '?content=' + content)
 	url += '&scope='+'user:email'
