@@ -24,9 +24,9 @@ def callback():
 		return '[!] OAuth failed. code:3 请备份好评论内容，关闭此窗口后会刷新文章页面。'
 
 	content = arg['content']
-	content = unquote_plus(content)
 	if len(content) == 1:
 		content = content[0]
+	content = unquote_plus(content)
 	state = arg['state']
 	if len(state) == 1:
 		state = state[0]
