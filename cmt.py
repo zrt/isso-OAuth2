@@ -17,6 +17,7 @@ def new():
 	# print(request.json)
 	uri = request.args.get('uri')
 	#r = request.json
+	print(request.args.get('data'))
 	r = json.loads(request.args.get('data'))
 	r['uri']=uri
 	content = json.dumps(r)
